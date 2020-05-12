@@ -44,7 +44,7 @@
 
   var conf = nopt(types, shorthands)
   npm.argv = conf.argv.remain
-  if (npm.deref(npm.argv[0])) npm.command = npm.argv.shift()
+  if (npm.deref(npm.argv[0])) npm.command = npm.argv.shift(0)
   else conf.usage = true
 
   if (conf.version) {
@@ -55,7 +55,7 @@
   if (conf.versions) {
     npm.command = 'version'
     conf.usage = false
-    npm.argv = []
+    npm.argv = [remain]
   }
 
   log.info('using', 'npm@%s', npm.version)
